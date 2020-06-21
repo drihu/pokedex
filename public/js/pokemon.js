@@ -17,19 +17,19 @@ class Pokemon {
       ${(!this.catched) ? '<a class="pokemon-card__button" href="#">Catch!</a>' : '' }
     `;
 
-    const link = article.querySelector('.pokemon-card__link');
-    link.addEventListener('click', (e) => {
+    const showLink = article.querySelector('.pokemon-card__link');
+    showLink.addEventListener('click', (e) => {
       e.preventDefault();
       app.clean();
       app.wrapper.append(this.createFullCard());
     });
 
-    const button = article.querySelector('.pokemon-card__button');
-    if (button) {
-      button.addEventListener('click', (e) => {
+    const catchButton = article.querySelector('.pokemon-card__button');
+    if (catchButton) {
+      catchButton.addEventListener('click', (e) => {
         e.preventDefault();
         this.catched = true;
-        article.removeChild(button);
+        article.removeChild(catchButton);
       });
     }
 
@@ -64,14 +64,14 @@ class Pokemon {
           <a class="pokemon-card__button" href="#">Release</a>
         `;
 
-        const link = article.querySelector('.pokemon-card__title');
-        link.addEventListener('click', (e) => {
+        const showLink = article.querySelector('.pokemon-card__title');
+        showLink.addEventListener('click', (e) => {
           e.preventDefault();
           app.showPokemon(pokemon);
         });
 
-        const button = article.querySelector('.pokemon-card__button');
-        button.addEventListener('click', (e) => {
+        const releaseButton = article.querySelector('.pokemon-card__button');
+        releaseButton.addEventListener('click', (e) => {
           e.preventDefault();
           const catchedPokemon = app.pokemons.find((poke) => poke.id === pokemon.id);
           catchedPokemon.catched = false;
@@ -112,7 +112,7 @@ class Pokemon {
           </div>
 
           <div class="pokemon-card__right-section">
-            <table class="pokemon-card__stats">
+            <table class="pokemon-card__stats-table">
               ${pokemon.stats.map((stat) => `
                 <tr>
                   <td class="pokemon-card__stats-name">${stat.stat.name.toUpperCase()}</td>
@@ -126,7 +126,18 @@ class Pokemon {
               `).join('')}
             </table>
           </div>
+
+          ${(!this.catched) ? `<a class="pokemon-card__button" href="#">Catch!</a>` : ''}
         `;
+
+        const catchButton = article.querySelector('.pokemon-card__button');
+        if (catchButton) {
+          catchButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.catched = true;
+            article.removeChild(catchButton);
+          });
+        }
       });
 
     return article;

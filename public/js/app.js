@@ -13,8 +13,9 @@ class App {
       .then((json) => json.results)
       .then((results) => {
         results.forEach((result, index) => {
+          const match = result.url.match(/\https:\/\/pokeapi.co\/api\/v2\/pokemon\/(?<id>\d+)/)
           const pokemon = new Pokemon({
-            id: index + 1,
+            id: Number(match.groups.id),
             name: result.name,
             url: result.url,
           });
@@ -27,6 +28,7 @@ class App {
 
   clean() {
     this.wrapper.innerHTML = '';
+    this.wrapper.classList.remove('wrapper--grid');
     this.searchbar[0].value = '';
   }
 
@@ -38,7 +40,6 @@ class App {
 
   showHome() {
     this.clean();
-    this.wrapper.classList.remove('wrapper--flex');
     this.pokemons.slice(0, 10).forEach((pokemon) => {
       this.wrapper.append(pokemon.createMiniCard());
     });
@@ -46,7 +47,7 @@ class App {
 
   showCatched() {
     this.clean();
-    this.wrapper.classList.add('wrapper--flex');
+    this.wrapper.classList.add('wrapper--grid');
     this.pokemons.filter((pokemon) => pokemon.catched).forEach((pokemon) => {
       this.wrapper.append(pokemon.createRegularCard());
     });
@@ -54,7 +55,6 @@ class App {
 
   showSearched(pokemons) {
     this.clean();
-    this.wrapper.classList.remove('wrapper--flex');
     pokemons.forEach((pokemon) => {
       this.wrapper.append(pokemon.createMiniCard());
     });

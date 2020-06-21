@@ -26,7 +26,7 @@ app.run().then((pokemons) => {
     const string = e.target[0].value;
     if (!string) return;
     const searchedPokemons = pokemons.filter(
-      (pokemon) => pokemon.name.match(string),
+      (pokemon) => pokemon.name.match(string.toLowerCase()),
     );
     app.showSearched(searchedPokemons);
   });

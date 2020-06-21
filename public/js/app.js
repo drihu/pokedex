@@ -7,7 +7,26 @@ class App {
     this.pokemons = [];
   }
 
+  savePokemons() {
+    localStorage.setItem('pokemons', JSON.stringify(this.pokemons));
+  }
+
+  loadPokemons() {
+    const storage = localStorage.getItem('pokemons');
+    if (storage) {
+      const pokemons = JSON.parse(storage);
+      pokemons.forEach((json) => {
+        this.pokemons.push(new Pokemon(json));
+      });
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   async run() {
+    if (this.loadPokemons()) return this.pokemons;
+
     return fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=2000')
       .then((res) => res.json())
       .then((json) => json.results)
@@ -21,6 +40,8 @@ class App {
           });
           this.pokemons.push(pokemon);
         });
+
+        localStorage.setItem('pokemons', JSON.stringify(this.pokemons));
 
         return this.pokemons;
       });

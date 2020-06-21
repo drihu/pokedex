@@ -1,9 +1,9 @@
 class Pokemon {
-  constructor({ id, name, url }) {
+  constructor({ id, name, url, catched = false }) {
     this.id = id;
     this.name = name;
     this.url = url;
-    this.catched = false;
+    this.catched = catched;
   }
 
   createMiniCard() {
@@ -29,6 +29,7 @@ class Pokemon {
       catchButton.addEventListener('click', (e) => {
         e.preventDefault();
         this.catched = true;
+        app.savePokemons();
         article.removeChild(catchButton);
       });
     }
@@ -50,7 +51,7 @@ class Pokemon {
 
         article.innerHTML = `
           <a class="pokemon-card__title" href="#">
-            #${pokemon.order}
+            #${pokemon.id}
             ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}
           </a>
 
@@ -75,6 +76,7 @@ class Pokemon {
           e.preventDefault();
           const catchedPokemon = app.pokemons.find((poke) => poke.id === pokemon.id);
           catchedPokemon.catched = false;
+          app.savePokemons();
           app.showCatched();
         });
       });
@@ -96,7 +98,7 @@ class Pokemon {
 
         article.innerHTML = `
           <h1 class="pokemon-card__title" href="#">
-            #${pokemon.order}
+            #${pokemon.id}
             ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}
           </h1>
 
@@ -135,6 +137,7 @@ class Pokemon {
           catchButton.addEventListener('click', (e) => {
             e.preventDefault();
             this.catched = true;
+            app.savePokemons();
             article.removeChild(catchButton);
           });
         }

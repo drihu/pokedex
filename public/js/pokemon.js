@@ -55,9 +55,9 @@ class Pokemon {
             ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}
           </a>
 
-          <figure class="pokemon-card__figure">
+          <a class="pokemon-card__figure" href="#">
             <img class="pokemon-card__image" src="${pokemon.sprites.front_default}">
-          </figure>
+          </a>
           <ul class="pokemon-card__metadata">
             <li>Types: <strong>${types}</strong></li>
           </ul>
@@ -65,8 +65,14 @@ class Pokemon {
           <a class="pokemon-card__button" href="#">Release</a>
         `;
 
-        const showLink = article.querySelector('.pokemon-card__title');
-        showLink.addEventListener('click', (e) => {
+        const titleLink = article.querySelector('.pokemon-card__title');
+        titleLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          app.showPokemon(pokemon);
+        });
+
+        const figureLink = article.querySelector('.pokemon-card__figure');
+        figureLink.addEventListener('click', (e) => {
           e.preventDefault();
           app.showPokemon(pokemon);
         });

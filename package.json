@@ -1,0 +1,15 @@
+{
+  "name": "pokedex",
+  "version": "0.1.0",
+  "description": "A small and basic pokedex",
+  "main": "none",
+  "scripts": {
+    "start": "live-server --mount=/:public --port=3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ricardo Huamani <ricardohuamanip@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

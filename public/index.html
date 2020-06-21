@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poke | drihu.com</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container container">
+      <a class="header__title" href="/">Pokédex</a>
+      <nav class="navbar">
+        <a href="#" class="navbar__link navbar__link--selected" id="home-link">Home</a>
+        <a href="#" class="navbar__link" id="catched-link">Catched</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__container container">
+      <form class="searchbar" id="searchbar">
+        <input class="searchbar__input" type="text" placeholder="Search for a pokémon">
+        <button class="searchbar__submit" type="submit">Search</button>
+      </form>
+
+      <div class="wrapper" id="wrapper"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__link" href="https://drihu.com">drihu.com</a>
+  </footer>
+
+  <script src="/js/pokemon.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -51,8 +51,10 @@
   padding: 10px;
 }
 .pokemon-card__stats-bar {
-  height: 10px;
+  padding: 0 5px;
   background: #fecb3c;
+  border-radius: 2px;
+  font-size: 0.8rem;
 }
 /* MINI CARD */
 .pokemon-card--mini {

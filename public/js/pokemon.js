@@ -128,6 +128,7 @@ class Pokemon {
                     <div
                       class="pokemon-card__stats-bar"
                       style="width: ${stat.base_stat}px">
+                      ${stat.base_stat}
                     </div>
                   </td>
                 </tr>

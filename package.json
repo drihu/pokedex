@@ -4,12 +4,13 @@
   "description": "A small and basic pokedex",
   "main": "none",
   "scripts": {
-    "start": "live-server --mount=/:public --port=3000",
+    "start": "parcel src/index.html -p 3000",
+    "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ricardo Huamani <ricardohuamanip@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "parcel-bundler": "^1.12.4"
   }
 }

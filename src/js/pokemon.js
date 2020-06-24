@@ -1,4 +1,6 @@
-class Pokemon {
+import App from './app.js';
+
+export default class Pokemon {
   constructor({ id, name, url, catched = false }) {
     this.id = id;
     this.name = name;
@@ -20,8 +22,8 @@ class Pokemon {
     const showLink = article.querySelector('.pokemon-card__link');
     showLink.addEventListener('click', (e) => {
       e.preventDefault();
-      app.clean();
-      app.wrapper.append(this.createFullCard());
+      App._instance.clean();
+      App._instance.wrapper.append(this.createFullCard());
     });
 
     const catchButton = article.querySelector('.pokemon-card__button');
@@ -29,7 +31,7 @@ class Pokemon {
       catchButton.addEventListener('click', (e) => {
         e.preventDefault();
         this.catched = true;
-        app.savePokemons();
+        App._instance.savePokemons();
         article.removeChild(catchButton);
       });
     }
@@ -68,22 +70,22 @@ class Pokemon {
         const titleLink = article.querySelector('.pokemon-card__title');
         titleLink.addEventListener('click', (e) => {
           e.preventDefault();
-          app.showPokemon(pokemon);
+          App._instance.showPokemon(pokemon);
         });
 
         const figureLink = article.querySelector('.pokemon-card__figure');
         figureLink.addEventListener('click', (e) => {
           e.preventDefault();
-          app.showPokemon(pokemon);
+          App._instance.showPokemon(pokemon);
         });
 
         const releaseButton = article.querySelector('.pokemon-card__button');
         releaseButton.addEventListener('click', (e) => {
           e.preventDefault();
-          const catchedPokemon = app.pokemons.find((poke) => poke.id === pokemon.id);
+          const catchedPokemon = App._instance.pokemons.find((poke) => poke.id === pokemon.id);
           catchedPokemon.catched = false;
-          app.savePokemons();
-          app.showCatched();
+          App._instance.savePokemons();
+          App._instance.showCatched();
         });
       });
 
@@ -144,7 +146,7 @@ class Pokemon {
           catchButton.addEventListener('click', (e) => {
             e.preventDefault();
             this.catched = true;
-            app.savePokemons();
+            App._instance.savePokemons();
             article.removeChild(catchButton);
           });
         }

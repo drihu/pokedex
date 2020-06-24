@@ -1,3 +1,5 @@
+import App from './app.js';
+
 const homeLink = document.querySelector('#home-link');
 const catchedLink = document.querySelector('#catched-link');
 const searchbar = document.querySelector('#searchbar');
@@ -25,6 +27,7 @@ app.run().then((pokemons) => {
     e.preventDefault();
     const string = e.target[0].value;
     if (!string) return;
+
     const searchedPokemons = pokemons.filter(
       (pokemon) => pokemon.name.match(string.toLowerCase()),
     );

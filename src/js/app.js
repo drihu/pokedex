@@ -1,4 +1,6 @@
-class App {
+import Pokemon from './pokemon.js';
+
+export default class App {
   constructor({ searchbar, wrapper }) {
     if (App._instance) return App._instance;
     else App._instance = this;
@@ -24,8 +26,10 @@ class App {
     }
   }
 
-  async run() {
-    if (this.loadPokemons()) return this.pokemons;
+  run() {
+    if (this.loadPokemons()) {
+      return new Promise((resolve) => resolve(this.pokemons));
+    }
 
     return fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=2000')
       .then((res) => res.json())

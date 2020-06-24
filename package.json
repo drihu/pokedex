@@ -11,7 +11,6 @@
   "author": "Ricardo Huamani <ricardohuamanip@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.3",
     "parcel-bundler": "^1.12.4"
   }
 }

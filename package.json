@@ -4,8 +4,8 @@
   "description": "A small and basic pokedex",
   "main": "none",
   "scripts": {
-    "start": "parcel src/index.html -p 3000",
-    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html -p 3000 --out-dir public",
+    "build": "parcel build src/index.html --out-dir public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ricardo Huamani <ricardohuamanip@gmail.com>",

@@ -33,6 +33,8 @@ app.run().then((pokemons) => {
     app.page -= 1;
     app.updatePagination();
     app.showHome();
+    homeLink.classList.add('navbar__link--selected');
+    catchedLink.classList.remove('navbar__link--selected');
   });
 
   app.navigation.next.addEventListener('click', (e) => {
@@ -40,6 +42,8 @@ app.run().then((pokemons) => {
     app.page += 1;
     app.updatePagination();
     app.showHome();
+    homeLink.classList.add('navbar__link--selected');
+    catchedLink.classList.remove('navbar__link--selected');
   });
 
   app.searchbar.addEventListener('submit', (e) => {

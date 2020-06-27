@@ -1,11 +1,12 @@
 import Pokemon from './pokemon.js';
 
 export default class App {
-  constructor({ searchbar, navigation, wrapper }) {
+  constructor({ searchbar, navigation, pagination, wrapper }) {
     if (App._instance) return App._instance;
     else App._instance = this;
     this.searchbar = searchbar;
     this.navigation = navigation;
+    this.pagination = pagination;
     this.wrapper = wrapper;
     this.pokemons = [];
     this.page = 1;
@@ -54,6 +55,11 @@ export default class App {
       return new Promise((resolve) => resolve(this.pokemons));
     }
     return this.fetchPokemons();
+  }
+
+  updatePagination() {
+    const pagesCount = Math.ceil(this.pokemons.length / 10);
+    this.pagination.textContent = `${this.page} / ${pagesCount}`;
   }
 
   clean() {

@@ -1,12 +1,14 @@
 import Pokemon from './pokemon.js';
 
 export default class App {
-  constructor({ searchbar, wrapper }) {
+  constructor({ searchbar, navigation, wrapper }) {
     if (App._instance) return App._instance;
     else App._instance = this;
     this.searchbar = searchbar;
+    this.navigation = navigation;
     this.wrapper = wrapper;
     this.pokemons = [];
+    this.page = 1;
   }
 
   savePokemons() {
@@ -26,11 +28,7 @@ export default class App {
     }
   }
 
-  run() {
-    if (this.loadPokemons()) {
-      return new Promise((resolve) => resolve(this.pokemons));
-    }
-
+  fetchPokemons() {
     return fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=2000')
       .then((res) => res.json())
       .then((json) => json.results)
@@ -44,10 +42,18 @@ export default class App {
           });
           this.pokemons.push(pokemon);
         });
-
-        localStorage.setItem('pokemons', JSON.stringify(this.pokemons));
+        this.savePokemons();
         return this.pokemons;
       });
+  }
+
+  run() {
+    this.navigation.addEventListener('submit', (e) => e.preventDefault());
+
+    if (this.loadPokemons()) {
+      return new Promise((resolve) => resolve(this.pokemons));
+    }
+    return this.fetchPokemons();
   }
 
   clean() {
@@ -64,7 +70,8 @@ export default class App {
   showHome() {
     this.clean();
     this.searchbar.input.value = '';
-    this.pokemons.slice(0, 10).forEach((pokemon) => {
+    const pokemons = this.pokemons.slice((this.page - 1) * 10, this.page * 10);
+    pokemons.forEach((pokemon) => {
       this.wrapper.append(pokemon.createMiniCard());
     });
   }

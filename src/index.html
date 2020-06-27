@@ -32,20 +32,20 @@
 
   <main class="main">
     <div class="main__container container">
-      <form class="searchbar" id="searchbar">
+      <form class="main__searchbar" id="searchbar">
         <input class="searchbar__input" name="input" type="text" placeholder="Search for a pokémon">
         <button class="searchbar__submit" name="button" type="submit">Search</button>
       </form>
 
-      <div class="main__navigation">
-        <a class="navigation__previous" href="#">
+      <form class="main__navigation" id="navigation">
+        <button class="navigation__previous" name="previous" href="#">
           <i class="fas fa-angle-double-left"></i>
-        </a>
+        </button>
         <div class="navigation__pagination" id="pagination">1 / 97</div>
-        <a class="navigation__next" href="#">
+        <button class="navigation__next" name="next" href="#">
           <i class="fas fa-angle-double-right"></i>
-        </a>
-      </div>
+        </button>
+      </form>
 
       <div class="main__wrapper" id="wrapper"></div>
     </div>

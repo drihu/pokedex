@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/pokemon-card.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
@@ -36,7 +37,17 @@
         <button class="searchbar__submit" name="button" type="submit">Search</button>
       </form>
 
-      <div class="wrapper" id="wrapper"></div>
+      <div class="main__navigation">
+        <a class="navigation__previous" href="#">
+          <i class="fas fa-angle-double-left"></i>
+        </a>
+        <div class="navigation__pagination" id="pagination">1 / 97</div>
+        <a class="navigation__next" href="#">
+          <i class="fas fa-angle-double-right"></i>
+        </a>
+      </div>
+
+      <div class="main__wrapper" id="wrapper"></div>
     </div>
   </main>
 

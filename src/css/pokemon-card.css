@@ -25,6 +25,7 @@
   margin-bottom: 15px;
   font-family: "Montserrat";
   font-weight: 700;
+  text-transform: capitalize;
 }
 .pokemon-card__metadata {
   margin-bottom: 15px;
@@ -51,7 +52,7 @@
   padding: 10px;
 }
 .pokemon-card__stats-bar {
-  padding: 0 5px;
+  padding: 0 2px 0 3px;
   background: #fecb3c;
   border-radius: 2px;
   font-size: 0.8rem;

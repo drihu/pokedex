@@ -25,7 +25,7 @@ app.run().then((pokemons) => {
 
   app.searchbar.addEventListener('submit', (e) => {
     e.preventDefault();
-    const string = e.target[0].value;
+    const string = e.target.input.value;
     if (!string) return;
 
     const searchedPokemons = pokemons.filter(
@@ -33,5 +33,4 @@ app.run().then((pokemons) => {
     );
     app.showSearched(searchedPokemons);
   });
-
 });

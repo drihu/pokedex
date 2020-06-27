@@ -1,4 +1,5 @@
 import App from './app.js';
+import { getTypesString } from './helper.js';
 
 export default class Pokemon {
   constructor({ id, name, url, catched = false }) {
@@ -20,13 +21,14 @@ export default class Pokemon {
     `;
 
     const showLink = article.querySelector('.pokemon-card__link');
+    const catchButton = article.querySelector('.pokemon-card__button');
+
     showLink.addEventListener('click', (e) => {
       e.preventDefault();
       App._instance.clean();
       App._instance.wrapper.append(this.createFullCard());
     });
 
-    const catchButton = article.querySelector('.pokemon-card__button');
     if (catchButton) {
       catchButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -47,39 +49,36 @@ export default class Pokemon {
     fetch(this.url)
       .then((res) => res.json())
       .then((pokemon) => {
-        let types = pokemon.types;
-        types = (types.length === 1) ? `${types[0].type.name.toUpperCase()}` :
-          `${types[0].type.name.toUpperCase()} / ${types[1].type.name.toUpperCase()}`;
-
         article.innerHTML = `
           <a class="pokemon-card__title" href="#">
-            #${pokemon.id}
-            ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}
+            #${pokemon.id} ${pokemon.name}
           </a>
 
           <a class="pokemon-card__figure" href="#">
             <img class="pokemon-card__image" src="${pokemon.sprites.front_default}">
           </a>
+
           <ul class="pokemon-card__metadata">
-            <li>Types: <strong>${types}</strong></li>
+            <li>Types: <strong>${getTypesString(pokemon.types)}</strong></li>
           </ul>
 
           <a class="pokemon-card__button" href="#">Release</a>
         `;
 
         const titleLink = article.querySelector('.pokemon-card__title');
+        const figureLink = article.querySelector('.pokemon-card__figure');
+        const releaseButton = article.querySelector('.pokemon-card__button');
+
         titleLink.addEventListener('click', (e) => {
           e.preventDefault();
           App._instance.showPokemon(pokemon);
         });
 
-        const figureLink = article.querySelector('.pokemon-card__figure');
         figureLink.addEventListener('click', (e) => {
           e.preventDefault();
           App._instance.showPokemon(pokemon);
         });
 
-        const releaseButton = article.querySelector('.pokemon-card__button');
         releaseButton.addEventListener('click', (e) => {
           e.preventDefault();
           const catchedPokemon = App._instance.pokemons.find((poke) => poke.id === pokemon.id);
@@ -100,14 +99,9 @@ export default class Pokemon {
     fetch(this.url)
       .then((res) => res.json())
       .then((pokemon) => {
-        let types = pokemon.types;
-        types = (types.length === 1) ? `${types[0].type.name.toUpperCase()}` :
-          `${types[0].type.name.toUpperCase()} / ${types[1].type.name.toUpperCase()}`;
-
         article.innerHTML = `
           <h1 class="pokemon-card__title" href="#">
-            #${pokemon.id}
-            ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}
+            #${pokemon.id} ${pokemon.name}
           </h1>
 
           <div class="pokemon-card__left-section">
@@ -115,7 +109,7 @@ export default class Pokemon {
               <img class="pokemon-card__image" src="${pokemon.sprites.front_default}">
             </figure>
             <ul class="pokemon-card__metadata">
-              <li>Types: <strong>${types}</strong></li>
+              <li>Types: <strong>${getTypesString(pokemon.types)}</strong></li>
               <li>Weight: <strong>${pokemon.weight / 10}kg</strong></li>
               <li>Height: <strong>${pokemon.height / 10}m</strong></li>
             </ul>

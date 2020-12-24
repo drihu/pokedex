@@ -1,72 +1,24 @@
-/* FONTS */
-@font-face {
-  font-family: "Pokemon Hollow";
-  src: url('../font/pokemon_hollow.ttf');
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Pokemon Solid";
-  src: url('../font/pokemon_solid.ttf');
-  font-style: normal;
-  font-weight: normal;
-}
-/* LAYOUT */
-body {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  background: #f2f3f5;
-}
-/* HEADER */
-.header {
-  background: #ef5350;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.header__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header__title {
-  padding-top: 10px;
-  color: #fecb3c;
-  font-family: "Pokemon Solid";
-  font-size: 2rem;
-  font-weight: normal;
-  text-shadow:
-    2px 2px 2px #355ea3,
-    2px -2px 2px #355ea3,
-    -2px 2px 2px #355ea3,
-    -2px -2px 2px #355ea3;
-}
-.header__title:hover {
-  text-decoration: none;
-}
-.navbar {
-  display: flex;
-}
-.navbar__link {
-  display: flex;
-  align-items: center;
-  padding: 25px;
-  color: #ffffff;
-  font-weight: 300;
-}
-.navbar__link--selected {
-  background: rgba(0, 0, 0, 0.1);
-}
-/* MAIN */
 .main {
   padding: 30px 0;
 }
-.main__navigation {
+
+.browser {
+  width: 500px;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.pagination {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
   margin-bottom: 30px;
 }
-.navigation__previous,
-.navigation__next {
+
+.pagination__previous-button,
+.pagination__next-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,56 +26,16 @@ body {
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
-.navigation__previous:hover,
-.navigation__next:hover {
+
+.pagination__previous-button:hover,
+.pagination__next-button:hover {
   text-decoration: none;
 }
-.navigation__pagination {
+
+.pagination__page {
   padding: 8px 0;
   color: #888888;
   font-size: 1.25rem;
   font-weight: 300;
   text-align: center;
-}
-.main__wrapper {
-  width: 100%;
-}
-/* SEARCHBAR */
-.main__searchbar {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  width: 100%;
-  margin-bottom: 30px;
-}
-.searchbar__input {
-  width: 100%;
-  padding: 8px 15px;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  font-family: "Source Sans Pro";
-  font-size: 1rem;
-  font-weight: 300;
-}
-.searchbar__submit {
-  padding: 8px 30px;
-  background: #fecb3c;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  font-family: "Source Sans Pro";
-  font-size: 1rem;
-  font-weight: 300;
-}
-/* FOOTER */
-.footer {
-  padding: 30px 0;
-  background: #333333;
-  text-align: center;
-}
-.footer__link {
-  color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 300;
 }

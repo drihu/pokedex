@@ -3,8 +3,8 @@ import App from './app.js';
 const homeLink = document.querySelector('#home-link');
 const catchedLink = document.querySelector('#catched-link');
 const searchbar = document.querySelector('#searchbar');
-const navigation = document.querySelector('#navigation');
-const pagination = document.querySelector('#pagination');
+const navigation = document.querySelector('#pagination');
+const pagination = document.querySelector('#page');
 const wrapper = document.querySelector('#wrapper');
 const app = new App({ searchbar, navigation, pagination, wrapper });
 

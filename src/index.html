@@ -12,6 +12,10 @@
   <meta property="og:image:width" content="256">
   <meta property="og:image:height" content="256">
   <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="stylesheet" href="./css/searchbar.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/pokemon-card.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
@@ -23,6 +27,7 @@
   <header class="header">
     <div class="header__container container">
       <a class="header__title" href="/">Pokédex</a>
+
       <nav class="navbar">
         <a href="#" class="navbar__link navbar__link--selected" id="home-link">Home</a>
         <a href="#" class="navbar__link" id="catched-link">Catched</a>
@@ -32,22 +37,22 @@
 
   <main class="main">
     <div class="main__container container">
-      <form class="main__searchbar" id="searchbar">
+      <form class="searchbar" id="searchbar">
         <input class="searchbar__input" name="input" type="text" placeholder="Search for a pokémon">
         <button class="searchbar__submit" name="button" type="submit">Search</button>
       </form>
 
-      <form class="main__navigation" id="navigation">
-        <button class="navigation__previous" name="previous" href="#">
+      <form class="pagination" id="pagination">
+        <button class="pagination__previous-button" name="previous" href="#">
           <i class="fas fa-angle-double-left"></i>
         </button>
-        <div class="navigation__pagination" id="pagination"></div>
-        <button class="navigation__next" name="next" href="#">
+        <div class="pagination__page" id="page"></div>
+        <button class="pagination__next-button" name="next" href="#">
           <i class="fas fa-angle-double-right"></i>
         </button>
       </form>
 
-      <div class="main__wrapper" id="wrapper"></div>
+      <div class="wrapper" id="wrapper"></div>
     </div>
   </main>
 

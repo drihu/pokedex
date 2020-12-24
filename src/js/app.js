@@ -49,7 +49,7 @@ export default class App {
   }
 
   run() {
-    this.navigation.addEventListener('submit', (e) => e.preventDefault());
+    this.navigation.addEventListener('submit',e => e.preventDefault());
 
     if (this.loadPokemons()) {
       return new Promise((resolve) => resolve(this.pokemons));

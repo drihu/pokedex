@@ -1,0 +1,38 @@
+.header {
+  background: #ef5350;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  padding-top: 10px;
+  color: #fecb3c;
+  font-family: "Pokemon Solid";
+  font-size: 2rem;
+  font-weight: normal;
+  text-decoration: none;
+  text-shadow: 2px 2px 2px #355ea3, 2px -2px 2px #355ea3, -2px 2px 2px #355ea3,
+    -2px -2px 2px #355ea3;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar__link {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  color: #ffffff;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.navbar__link--selected {
+  background: rgba(0, 0, 0, 0.1);
+}

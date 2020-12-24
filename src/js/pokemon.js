@@ -11,8 +11,7 @@ export default class Pokemon {
 
   createMiniCard() {
     const article = document.createElement('article');
-    article.classList.add('pokemon-card');
-    article.classList.add('pokemon-card--mini');
+    article.classList.add('pokemon-card', 'pokemon-card--mini');
     article.innerHTML = `
       <a class="pokemon-card__link" href="#">
         #${this.id} ${this.name}
@@ -43,8 +42,7 @@ export default class Pokemon {
 
   createRegularCard() {
     const article = document.createElement('article');
-    article.classList.add('pokemon-card');
-    article.classList.add('pokemon-card--regular');
+    article.classList.add('pokemon-card', 'pokemon-card--regular');
 
     fetch(this.url)
       .then((res) => res.json())
@@ -93,8 +91,7 @@ export default class Pokemon {
 
   createFullCard() {
     const article = document.createElement('article');
-    article.classList.add('pokemon-card');
-    article.classList.add('pokemon-card--full');
+    article.classList.add('pokemon-card', 'pokemon-card--full');
 
     fetch(this.url)
       .then((res) => res.json())

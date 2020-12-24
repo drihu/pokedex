@@ -1,41 +1,30 @@
 .main {
   padding: 30px 0;
+  background: #f2f3f5;
+}
+
+.main__container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
 }
 
 .browser {
-  width: 500px;
+  width: 400px;
+  margin-right: 30px;
+}
+
+.pokemon-list {
+  display: grid;
+  row-gap: 5px;
 }
 
 .wrapper {
-  width: 100%;
+  flex-grow: 1;
 }
 
-.pagination {
+.wrapper--grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 15px;
-  margin-bottom: 30px;
-}
-
-.pagination__previous-button,
-.pagination__next-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-
-.pagination__previous-button:hover,
-.pagination__next-button:hover {
-  text-decoration: none;
-}
-
-.pagination__page {
-  padding: 8px 0;
-  color: #888888;
-  font-size: 1.25rem;
-  font-weight: 300;
-  text-align: center;
+  gap: 15px;
 }

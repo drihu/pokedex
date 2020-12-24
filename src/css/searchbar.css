@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .searchbar__input {

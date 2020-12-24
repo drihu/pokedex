@@ -1,0 +1,32 @@
+.pagination {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  margin-bottom: 15px;
+}
+
+.pagination__previous-button,
+.pagination__next-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.pagination__previous-button:hover,
+.pagination__next-button:hover {
+  text-decoration: none;
+}
+
+.pagination__page {
+  padding: 8px 0;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+}

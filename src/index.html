@@ -14,10 +14,11 @@
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/font.css">
   <link rel="stylesheet" href="./css/header.css">
-  <link rel="stylesheet" href="./css/footer.css">
-  <link rel="stylesheet" href="./css/searchbar.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/searchbar.css">
+  <link rel="stylesheet" href="./css/pagination.css">
   <link rel="stylesheet" href="./css/pokemon-card.css">
+  <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -37,22 +38,26 @@
 
   <main class="main">
     <div class="main__container container">
-      <form class="searchbar" id="searchbar">
-        <input class="searchbar__input" name="input" type="text" placeholder="Search for a pokémon">
-        <button class="searchbar__submit" name="button" type="submit">Search</button>
-      </form>
+      <aside class="browser">
+        <form class="searchbar" id="searchbar">
+          <input class="searchbar__input" name="input" type="text" placeholder="Search for a pokémon">
+          <button class="searchbar__submit" name="button" type="submit">Search</button>
+        </form>
 
-      <form class="pagination" id="pagination">
-        <button class="pagination__previous-button" name="previous" href="#">
-          <i class="fas fa-angle-double-left"></i>
-        </button>
-        <div class="pagination__page" id="page"></div>
-        <button class="pagination__next-button" name="next" href="#">
-          <i class="fas fa-angle-double-right"></i>
-        </button>
-      </form>
+        <form class="pagination" id="pagination">
+          <button class="pagination__previous-button" name="previous" href="#">
+            <i class="fas fa-angle-double-left"></i>
+          </button>
+          <input class="pagination__page" name="page" type="text" disabled>
+          <button class="pagination__next-button" name="next" href="#">
+            <i class="fas fa-angle-double-right"></i>
+          </button>
+        </form>
 
-      <div class="wrapper" id="wrapper"></div>
+        <div class="pokemon-list" id="search-result"></div>
+      </aside>
+
+      <section class="wrapper" id="wrapper"></section>
     </div>
   </main>
 

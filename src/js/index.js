@@ -1,59 +1,61 @@
+import 'regenerator-runtime/runtime';
 import App from './app.js';
 
+const searchbar = document.querySelector('#searchbar');
+const pagination = document.querySelector('#pagination');
+const searchResult = document.querySelector('#search-result');
+const wrapper = document.querySelector('#wrapper');
 const homeLink = document.querySelector('#home-link');
 const catchedLink = document.querySelector('#catched-link');
-const searchbar = document.querySelector('#searchbar');
-const navigation = document.querySelector('#pagination');
-const pagination = document.querySelector('#page');
-const wrapper = document.querySelector('#wrapper');
-const app = new App({ searchbar, navigation, pagination, wrapper });
 
-app.run().then((pokemons) => {
-  app.updatePagination();
-  app.showHome();
+const app = new App({ searchbar, pagination, searchResult, wrapper });
 
-  homeLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    app.page = 1;
-    app.updatePagination();
-    app.showHome();
-    homeLink.classList.add('navbar__link--selected');
-    catchedLink.classList.remove('navbar__link--selected');
-  });
+app.init();
 
-  catchedLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    app.showCatched();
-    homeLink.classList.remove('navbar__link--selected');
-    catchedLink.classList.add('navbar__link--selected');
-  });
+homeLink.addEventListener('click', (event) => {
+  event.preventDefault();
+  app.init();
+  homeLink.classList.add('navbar__link--selected');
+  catchedLink.classList.remove('navbar__link--selected');
+});
 
-  app.navigation.previous.addEventListener('click', (e) => {
-    if (app.page === 1) return;
-    app.page -= 1;
-    app.updatePagination();
-    app.showHome();
-    homeLink.classList.add('navbar__link--selected');
-    catchedLink.classList.remove('navbar__link--selected');
-  });
+catchedLink.addEventListener('click', (event) => {
+  event.preventDefault();
+  app.showCatchedPokemons();
+  homeLink.classList.remove('navbar__link--selected');
+  catchedLink.classList.add('navbar__link--selected');
+  app.wrapper.classList.add('wrapper--grid');
+});
 
-  app.navigation.next.addEventListener('click', (e) => {
-    if (app.page === app.pagesCount) return;
-    app.page += 1;
-    app.updatePagination();
-    app.showHome();
-    homeLink.classList.add('navbar__link--selected');
-    catchedLink.classList.remove('navbar__link--selected');
-  });
+app.pagination.previous.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (app.page === 1) return;
 
-  app.searchbar.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const string = e.target.input.value;
-    if (!string) return;
+  app.page -= 1;
+  app.showPagination();
+  app.showSearchedPokemons();
+});
 
-    const searchedPokemons = pokemons.filter(
-      (pokemon) => pokemon.name.match(string.toLowerCase()),
+app.pagination.next.addEventListener('click', (event) => {
+  event.preventDefault();
+  const pagesCount = Math.ceil(app.pokemons.length / 10);
+  if (app.page === pagesCount) return;
+
+  app.page += 1;
+  app.showPagination();
+  app.showSearchedPokemons();
+});
+
+app.searchbar.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const searchText = event.target.input.value;
+
+  if (searchText) {
+    const filteredPokemons = app.pokemons.filter((pokemon) =>
+      pokemon.name.match(searchText.toLowerCase())
     );
-    app.showSearched(searchedPokemons);
-  });
+    app.showSearchedPokemons(filteredPokemons);
+  } else {
+    app.showSearchedPokemons();
+  }
 });
